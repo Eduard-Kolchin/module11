@@ -1,6 +1,8 @@
 // элементы в DOM можно получить при помощи функции querySelector
 const fruitsList = document.querySelector('.fruits__list'); // список карточек
 const shuffleButton = document.querySelector('.shuffle__btn'); // кнопка перемешивания
+const minweightInput = document.querySelector('.minweight__input'); // поле мин.веса для фильтрации
+const maxweightInput = document.querySelector('.maxweight__input'); // поле макс.веса для фильтрации
 const filterButton = document.querySelector('.filter__btn'); // кнопка фильтрации
 const sortKindLabel = document.querySelector('.sort__kind'); // поле с названием сортировки
 const sortTimeLabel = document.querySelector('.sort__time'); // поле с временем сортировки
@@ -11,6 +13,8 @@ const colorInput = document.querySelector('.color__input'); // поле с на�
 const weightInput = document.querySelector('.weight__input'); // поле с весом
 const addActionButton = document.querySelector('.add__action__btn'); // кнопка добавления
 
+function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }; // функция проверки на соответствие числовому типу
+
 // список фруктов в JSON формате
 let fruitsJSON = `[
   {"kind": "Мангустин", "color": "фиолетовый", "weight": 13},
@@ -20,19 +24,33 @@ let fruitsJSON = `[
   {"kind": "Тамаринд", "color": "светло-коричневый", "weight": 22}
 ]`;
 
+// библиотека цветов
+let colorNameJSON = `[
+  {"value": "violet", "color": "фиолетовый"},
+  {"value": "green", "color": "зеленый"},
+  {"value": "crimson", "color": "розово-красный"},
+  {"value": "yellow", "color": "желтый"},
+  {"value": "peru", "color": "светло-коричневый"}
+]`;
 // преобразование JSON в объект JavaScript
 let fruits = JSON.parse(fruitsJSON);
-
+let colorName = JSON.parse(colorNameJSON);
 /*** ОТОБРАЖЕНИЕ ***/
 
 // отрисовка карточек
-const display = () => {
-  // TODO: очищаем fruitsList от вложенных элементов,
-  // чтобы заполнить актуальными данными из fruits
+  const display = () => {
 
-  for (let i = 0; i < fruits.length; i++) {
-    // TODO: формируем новый элемент <li> при помощи document.createElement,
-    // и добавляем в конец списка fruitsList при помощи document.appendChild
+  // TODO: очищаем fruitsList от вложенных элементов,
+    fruitsList.innerHTML = '';
+
+  // чтобы заполнить актуальными данными из fruits через цикл for
+    for (let i = 0; i < fruits.length; i++) {
+    const newLi = document.createElement('li');
+    // поиск цвета
+    //let index = colorName.color.indexOf(fruits[i].color);
+    newLi.className = 'fruit__item fruit_green'; //+ colorName[index].value;
+    newLi.innerHTML = "<div class = \" fruit__info \" > <div>index:" + (i+1) + "</div> <div>kind: " + fruits[i].kind + "</div> <div>color:" + fruits[i].color + "</div> <div>weight (кг):" + fruits[i].weight + "</div> </div>";
+    fruitsList.appendChild(newLi);
   }
 };
 
@@ -49,18 +67,20 @@ const getRandomInt = (min, max) => {
 // перемешивание массива
 const shuffleFruits = () => {
   let result = [];
-
-  // ATTENTION: сейчас при клике вы запустите бесконечный цикл и браузер зависнет
+  const oldFruits = fruits;
+  let randomEl;
   while (fruits.length > 0) {
-    // TODO: допишите функцию перемешивания массива
-    //
-    // Подсказка: находим случайный элемент из fruits, используя getRandomInt
-    // вырезаем его из fruits и вставляем в result.
-    // ex.: [1, 2, 3], [] => [1, 3], [2] => [3], [2, 1] => [], [2, 1, 3]
-    // (массив fruits будет уменьшатся, а result заполняться)
+    randomEl = fruits[getRandomInt(0,(fruits.length-1))];
+    result.push(randomEl);
+    fruits.splice(fruits.indexOf(randomEl),1);
   }
-
-  fruits = result;
+  
+  if (oldFruits === result) {
+    alert('Ошибка перемешивания. Попробуйте ещё раз.')
+  }
+  else {
+      fruits = result;
+  }
 };
 
 shuffleButton.addEventListener('click', () => {
@@ -72,9 +92,15 @@ shuffleButton.addEventListener('click', () => {
 
 // фильтрация массива
 const filterFruits = () => {
-  fruits.filter((item) => {
-    // TODO: допишите функцию
-  });
+  if (isNumber(minweightInput.value) && isNumber(maxweightInput.value)) {
+  fruits = JSON.parse(fruitsJSON);
+  fruits = fruits
+    .filter((item) => {
+      return parseInt(minweightInput.value) < item.weight && item.weight< parseInt(maxweightInput.value);
+    });
+  }
+  else { alert('Недопустимый формат для минимальной и максимальной границ!')}
+    
 };
 
 filterButton.addEventListener('click', () => {
