@@ -25,11 +25,13 @@ let fruitsJSON = `[
 ]`;
 
 // библиотека цветов
-let values = ["белый" , "светло-желтый" , "желтый" , "золотой" , "розовый" , "светло-розовый" , "оранжевый" , "темно-оранжевый" , "коралловый" , "ярко-розовый" , "оранжево-красный" , "фуксия" , "пурпурный" , "красный" , "бежевый" , "хаки" , "фиолетовый" , "лавандовый" , "светло-голубой" , "сливовый" , "малиновый" , "бледно-фиолетовый" , "светло-серый" , "шоколадный" , "светло-коричневый" , "серебряный" , "кирпичный" , "зелено-желтый" , "светло-голубой" , "темно-серый" , "коричневый" , "желто-зеленый" , "бледно-зеленый" , "темно-фиолетовый" , "светло-зеленый" , "темно-зеленый" , "темная магента" , "темно-красный" , "светло-голубой" , "небесно-голубой" , "серый" , "оливковый" , "фиолетовый" , "бордовый" , "аквамариновый" , "серый сланец" , "темно-серый" , "васильковый" , "индиго" , "темно-синий" , "бирюзовый" , "лимонно-зеленый" , "морской зеленый" , "светло-зеленый" , "голубой" , "лаймовый" , "темно-синий" , "темно-голубой" , "зеленый" , "темно-зеленый" , "синий" , "темно-синий" , "флотский" , "черный" ];
-let colors = ["white" , "lightyellow" , "yellow" , "gold" , "pink" , "lightpink" , "orange" , "darkorange" , "coral" , "hotpink" , "orangeRed" , "fuchsia" , "magenta" , "red" , "beige" , "khaki" , "violet" , "lavender" , "lightcyan" , "plum" , "crimson" , "palevioletred" , "lightgray" , "chocolate" , "peru" , "silver" , "firebrick" , "greenyellow" , "lightblue" , "darkgray" , "brown" , "yellowgreen" , "palegreen" , "darkviolet" , "lightgreen" , "darkseagreen" , "darkmagenta" , "darkred" , "lightskyblue" , "skyblue" , "gray" , "olive" , "purple" , "maroon" , "aquamarine" , "slategray" , "slateblue" , "cornflowerblue" , "indigo" , "darkslateblue" , "turquoise" , "limegreen" , "seagreen" , "lightseagreen" , "cyan" , "lime" , "deepskyblue" , "darkcyan" , "green" , "darkgreen" , "blue" , "darkblue" , "navy" , "black"];
-let hexCods = ["#FFFFFF" , "#FFFFE0" , "#FFFF00" , "#FFD700" , "#FFC0CB" , "#FFB6C1" , "#FFA500" , "#FF8C00" , "#FF7F50" , "#FF69B4" , "#FF4500" , "#FF00FF" , "#FF00FF" , "#FF0000" , "#F5F5DC" , "#F0E68C" , "#EE82EE" , "#E6E6FA" , "#E0FFFF" , "#DDA0DD" , "#DC143C" , "#DB7093" , "#D3D3D3" , "#D2691E" , "#CD853F" , "#C0C0C0" , "#B22222" , "#ADFF2F" , "#ADD8E6" , "#A9A9A9" , "#A52A2A" , "#9ACD32" , "#98FB98" , "#9400D3" , "#90EE90" , "#8FBC8F" , "#8B008B" , "#8B0000" , "#87CEFA" , "#87CEEB" , "#808080" , "#808000" , "#800080" , "#800000" , "#7FFFD4" , "#708090" , "#6A5ACD" , "#6495ED" , "#4B0082" , "#483D8B" , "#40E0D0" , "#32CD32" , "#2E8B57" , "#20B2AA" , "#00FFFF" , "#00FF00" , "#00BFFF" , "#008B8B" , "#008000" , "#006400" , "#0000FF" , "#00008B" , "#000080" , "#000000"];
-let colorName = values.map((value,index) => ({
-    value, color : colors[index], hexCod : hexCods[index]
+let colorsRu = ["белый" , "светло-желтый" , "желтый" , "золотой" , "розовый" , "светло-розовый" , "оранжевый" , "темно-оранжевый" , "коралловый" , "ярко-розовый" , "оранжево-красный" , "фуксия" , "пурпурный" , "красный" , "бежевый" , "хаки" , "фиолетовый" , "лавандовый" , "светло-голубой" , "сливовый" , "малиновый" , "бледно-фиолетовый" , "светло-серый" , "шоколадный" , "светло-коричневый" , "серебряный" , "кирпичный" , "зелено-желтый" , "светло-голубой" , "темно-серый" , "коричневый" , "желто-зеленый" , "бледно-зеленый" , "темно-фиолетовый" , "светло-зеленый" , "темно-зеленый" , "темная магента" , "темно-красный" , "светло-голубой" , "небесно-голубой" , "серый" , "оливковый" , "фиолетовый" , "бордовый" , "аквамариновый" , "серый сланец" , "темно-серый" , "васильковый" , "индиго" , "темно-синий" , "бирюзовый" , "лимонно-зеленый" , "морской зеленый" , "светло-зеленый" , "голубой" , "лаймовый" , "темно-синий" , "темно-голубой" , "зеленый" , "темно-зеленый" , "синий" , "темно-синий" , "флотский" , "черный" ];
+let colorsEn = ["white" , "lightyellow" , "yellow" , "gold" , "pink" , "lightpink" , "orange" , "darkorange" , "coral" , "hotpink" , "orangeRed" , "fuchsia" , "magenta" , "red" , "beige" , "khaki" , "violet" , "lavender" , "lightcyan" , "plum" , "crimson" , "palevioletred" , "lightgray" , "chocolate" , "peru" , "silver" , "firebrick" , "greenyellow" , "lightblue" , "darkgray" , "brown" , "yellowgreen" , "palegreen" , "darkviolet" , "lightgreen" , "darkseagreen" , "darkmagenta" , "darkred" , "lightskyblue" , "skyblue" , "gray" , "olive" , "purple" , "maroon" , "aquamarine" , "slategray" , "slateblue" , "cornflowerblue" , "indigo" , "darkslateblue" , "turquoise" , "limegreen" , "seagreen" , "lightseagreen" , "cyan" , "lime" , "deepskyblue" , "darkcyan" , "green" , "darkgreen" , "blue" , "darkblue" , "navy" , "black"];
+let colorsHEX = ["#FFFFFF" , "#FFFFE0" , "#FFFF00" , "#FFD700" , "#FFC0CB" , "#FFB6C1" , "#FFA500" , "#FF8C00" , "#FF7F50" , "#FF69B4" , "#FF4500" , "#FF00FF" , "#FF00FF" , "#FF0000" , "#F5F5DC" , "#F0E68C" , "#EE82EE" , "#E6E6FA" , "#E0FFFF" , "#DDA0DD" , "#DC143C" , "#DB7093" , "#D3D3D3" , "#D2691E" , "#CD853F" , "#C0C0C0" , "#B22222" , "#ADFF2F" , "#ADD8E6" , "#A9A9A9" , "#A52A2A" , "#9ACD32" , "#98FB98" , "#9400D3" , "#90EE90" , "#8FBC8F" , "#8B008B" , "#8B0000" , "#87CEFA" , "#87CEEB" , "#808080" , "#808000" , "#800080" , "#800000" , "#7FFFD4" , "#708090" , "#6A5ACD" , "#6495ED" , "#4B0082" , "#483D8B" , "#40E0D0" , "#32CD32" , "#2E8B57" , "#20B2AA" , "#00FFFF" , "#00FF00" , "#00BFFF" , "#008B8B" , "#008000" , "#006400" , "#0000FF" , "#00008B" , "#000080" , "#000000"];
+const colorsArrRu = colorsRu.map((colorRu,index)=>colorRu); // создание массива упорядоченых русских значений цвета
+const colorsArrEn = colorsEn.map((colorEn,index)=>colorEn); // создание массива упорядоченых стандартных английских значений цвета
+let colorName = colorsRu.map((colorRu,index) => ({
+  colorRu, colorEn : colorsEn[index], colorsHEX : colorsHEX[index]
 }));
 
 // преобразование JSON в объект JavaScript
@@ -43,12 +45,20 @@ let fruits = JSON.parse(fruitsJSON);
     fruitsList.innerHTML = '';
 
   // чтобы заполнить актуальными данными из fruits через цикл for
+  
     for (let i = 0; i < fruits.length; i++) {
-    const newLi = document.createElement('li');
-    // поиск цвета
-    //let index = colorName.color.indexOf(fruits[i].color);
-    newLi.className = 'fruit__item fruit_green'; //+ colorName[index].value;
+    const newLi = document.createElement('li');        
+    newLi.className = 'fruit__item';
     newLi.innerHTML = "<div class = \" fruit__info \" > <div>index:" + (i+1) + "</div> <div>kind: " + fruits[i].kind + "</div> <div>color:" + fruits[i].color + "</div> <div>weight (кг):" + fruits[i].weight + "</div> </div>";
+    // поиск цвета
+        const indexColor = colorsArrRu.indexOf(fruits[i].color);          
+          console.log(indexColor);
+        if (indexColor > 0) {
+          newLi.style.background = colorsArrEn[indexColor];
+          console.log(colorsArrEn[indexColor]);
+        } else {
+          newLi.style.background = 'black';
+        }
     fruitsList.appendChild(newLi);
   }
 };
@@ -93,7 +103,7 @@ shuffleButton.addEventListener('click', () => {
 
 const filterFruits = () => {
   if (isNumber(minweightInput.value) && isNumber(maxweightInput.value)) {
-  //fruits = JSON.parse(fruitsJSON);
+  //fruits = JSON.parse(fruitsJSON); // восстанавливает fruits из JSON вначале каждой фильтрации
   fruits = fruits
     .filter((item) => {
       return parseInt(minweightInput.value) < item.weight && item.weight< parseInt(maxweightInput.value);
@@ -112,84 +122,64 @@ filterButton.addEventListener('click', () => {
 
 let sortKind = 'bubbleSort'; // инициализация состояния вида сортировки
 let sortTime = '-'; // инициализация состояния времени сортировки
-const valuesColorArr = values.map((value,index)=>value); // создание массива упорядоченых значений цвета
 
-  // функция сравнения двух элементов
-const comparationColor = (a, b) => {
-  valuesColorArr.indexOf(a.color) > valuesColorArr.indexOf(b.color);
-};
-
-//const sortAPI = {
-//  bubbleSort() {
-//    const n = fruits.length;
-//    for (let i = 0; i < n-1; i++) { 
-//        for (let j = 0; j < n-1-i; j++) { 
-//            if (valuesColorArr.indexOf(fruits[j].color) > valuesColorArr.indexOf(fruits[j+1].color)) {
-//                let temp = fruits[j+1]; 
-//                fruits[j+1] = fruits[j]; 
-//                fruits[j] = temp; 
-//            }
-//        }
-//    }                    
-//  },
-  
-//  
-  // функция сортировки пузырьком
-//  bubbleSort(arr, comparation) {
-//    const n = arr.length;
-//    // внешняя итерация по элементам
-//    for (let i = 0; i < n-1; i++) { 
-//        // внутренняя итерация для перестановки элемента в конец массива
-//        for (let j = 0; j < n-1-i; j++) { 
-//            // сравниваем элементы
-//            if (comparation(arr[j], arr[j+1])) { 
-//                // делаем обмен элементов
-//                let temp = arr[j+1]; 
-//                arr[j+1] = arr[j]; 
-//                arr[j] = temp; 
-//            }
-//        }
-//    }    
-//  },
-
-//  quickSort(arr, comparation) {
-//    // TODO: допишите функцию быстрой сортировки
-//  },
-
-  // выполняет сортировку и производит замер времени
-//  startSort(sort, arr, comparation) {
-//    const start = new Date().getTime();
-//    sort(arr, comparation);
-//    const end = new Date().getTime();
-//    sortTime = `${end - start} ms`;
-//  },
-//};
+let sortAPI = {
+// функция сортировки пузырьком
+bubbleSort(arr) {
+  const n = arr.length;
+              let temp;
+              for (let indexСycle = 0; indexСycle < n-1; indexСycle++) { 
+                  for (let index = 0; index < n-1-indexСycle; index++) { 
+                      if (colorsArrRu.indexOf(arr[index].color) > colorsArrRu.indexOf(arr[index+1].color)) {
+                          temp = arr[index+1]; 
+                          arr[index+1] = arr[index]; 
+                          arr[index] = temp; 
+                      }
+                  }
+              }
+},
+// функция быстрой сортировки
+quickSort(arr) {
+   for (let i = 0, l = arr.length, k = l - 1; i < k; i++) {
+    let indexMin = i;
+    for (let j = i + 1; j < l; j++) {
+        if (colorsArrRu.indexOf(arr[indexMin].color) > colorsArrRu.indexOf(arr[j].color)) {
+            indexMin = j;
+        }
+    }
+    if (indexMin !== i) {
+        [arr[i], arr[indexMin]] = [arr[indexMin], arr[i]];
+    }
+}
+return arr;
+}
+}
 
 // инициализация полей
 sortKindLabel.textContent = sortKind;
 sortTimeLabel.textContent = sortTime;
 
+// действие кнопки смены алгоритма сортировки
+let sort = false;
 sortChangeButton.addEventListener('click', () => {
-  // TODO: переключать значение sortKind между 'bubbleSort' / 'quickSort'
+  if (sort) {
+    sort = false;
+    sortKind = 'bubbleSort';
+  }
+  else {
+    sort = true;
+    sortKind = 'quickSort';
+  }
+  sortKindLabel.textContent = sortKind;
+  sortTimeLabel.textContent = '-';
 });
 
+// действие кнопки запуска алгоритма сортировки
 sortActionButton.addEventListener('click', () => {
   sortKindLabel.textContent = sortKind; // вывести в sortTimeLabel значение 'sorting...'
-//  const sort = sortAPI[2]//[sortKind];
-//  sortAPI.startSort(sort, fruits, comparationColor);
-        const start = new Date().getTime();
-              const n = fruits.length;
-              let temp;
-              for (let indexСycle = 0; indexСycle < n-1; indexСycle++) { 
-                  for (let index = 0; index < n-1-indexСycle; index++) { 
-                      if (valuesColorArr.indexOf(fruits[index].color) > valuesColorArr.indexOf(fruits[index+1].color)) {
-                          temp = fruits[index+1]; 
-                          fruits[index+1] = fruits[index]; 
-                          fruits[index] = temp; 
-                      }
-                  }
-              }
 
+        const start = new Date().getTime();
+        sortAPI[sortKind](fruits);
         const end = new Date().getTime();
         sortTime = `${end - start} ms`;
 
@@ -200,7 +190,14 @@ sortActionButton.addEventListener('click', () => {
 /*** ДОБАВИТЬ ФРУКТ ***/
 
 addActionButton.addEventListener('click', () => {
-  // TODO: создание и добавление нового фрукта в массив fruits
-  // необходимые значения берем из kindInput, colorInput, weightInput
+  if (kindInput.value && colorInput.value && weightInput.value) {
+    fruits.push({"kind": kindInput.value, "color": colorInput.value, "weight": weightInput.value});
+    kindInput.value = '';
+    colorInput.value = '';
+    weightInput.value = '';
+  }
+  else {
+    alert('Нехватает данных для добавления фрукта!');
+  }
   display();
 });

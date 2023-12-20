@@ -107,24 +107,8 @@ main {
   border-radius: 10px;
 }
 
-.fruit_violet {
-  background: #8b00ff;
-}
-
-.fruit_green {
-  background: #84cd1b;
-}
-
-.fruit_crimson {
-  background: #dc143c;
-}
-
-.fruit_yellow {
-  background: #ffd800;
-}
-
-.fruit_peru {
-  background: #cd853f;
+.fruit_black {
+  background: black;
 }
 
 .fruit__info {
